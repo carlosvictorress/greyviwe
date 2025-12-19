@@ -17,12 +17,19 @@
             whatsapp: '#25D366'
           },
           animation: {
-            'cursor': 'cursor .75s step-end infinite'
+            'cursor': 'cursor .75s step-end infinite',
+            'blob': 'blob 7s infinite'
           },
           keyframes: {
             cursor: {
               '0%, 100%': { opacity: '1' },
               '50%': { opacity: '0' }
+            },
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' }
             }
           }
         }
@@ -60,7 +67,6 @@
       box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15);
     }
 
-    /* Classe utilitária para imagens dos cards */
     .card-img-default {
         width: 100%;
         height: 220px;
@@ -96,7 +102,7 @@
       line-height: 1.5;
     }
 
-    /* STEP CARD STYLE (TIMELINE) */
+    /* STEP CARD STYLE */
     .step-card {
       position: relative;
       background: white;
@@ -125,6 +131,21 @@
       color: white;
     }
 
+    /* FUTURISTIC ABOUT CARD */
+    .about-bento-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    .about-bento-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(198, 40, 40, 0.5); /* Brand Red Border on Hover */
+      transform: translateY(-5px);
+    }
+
     /* GALERIA LIGHTBOX */
     .gallery-img {
       cursor: pointer;
@@ -144,16 +165,8 @@
       filter: brightness(1.1);
     }
 
-    /* LIGHTBOX MODAL */
-    #lightbox {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    #lightbox.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    #lightbox { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    #lightbox.open { opacity: 1; pointer-events: auto; }
 
     /* ANIMAÇÕES GERAIS */
     #constructionModal { transition: opacity 0.3s ease; }
@@ -297,7 +310,6 @@
         <p class="card-text" data-i18n="res_text">Transform your home with our residential construction services. From renovations to new builds, we bring your vision to life with quality and care.</p>
       </div>
     </div>
-
     <div class="reveal-card service-card-style relative group">
         <img src="img/comercial.jpg" alt="Commercial Construction" class="card-img-default blur-[2px] grayscale opacity-60 group-hover:blur-none group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
         <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
@@ -357,46 +369,53 @@
   <div class="max-w-6xl mx-auto">
     <h4 class="text-xl font-bold text-center mb-8 opacity-80" data-i18n="gallery_title">Project Gallery</h4>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      
-      <div class="gallery-item reveal-card">
-        <img src="galeria/instalação de armario.jpeg" alt="Cabinet" class="gallery-img" onclick="openLightbox(this.src)">
-      </div>
-      <div class="gallery-item reveal-card">
-        <img src="galeria/kitchen.jpeg" alt="Kitchen" class="gallery-img" onclick="openLightbox(this.src)">
-      </div>
-      <div class="gallery-item reveal-card">
-        <img src="galeria/framing.jpeg" alt="Framing" class="gallery-img" onclick="openLightbox(this.src)">
-      </div>
-      <div class="gallery-item reveal-card">
-        <img src="galeria/kddf.jpeg" alt="Doors" class="gallery-img" onclick="openLightbox(this.src)">
-      </div>
-      <div class="gallery-item reveal-card">
-        <img src="galeria/decks2.jpg" alt="Decks" class="gallery-img" onclick="openLightbox(this.src)">
-      </div>
-      <div class="gallery-item reveal-card">
-        <img src="galeria/bathroom remodeling .jpeg" alt="Bathroom" class="gallery-img" onclick="openLightbox(this.src)">
-      </div>
-      <div class="gallery-item reveal-card">
-        <img src="galeria/residencial.jpeg" alt="Residential" class="gallery-img" onclick="openLightbox(this.src)">
-      </div>
-      <div class="gallery-item reveal-card">
-        <img src="galeria/comercial.jpg" alt="Commercial" class="gallery-img" onclick="openLightbox(this.src)">
-      </div>
-
+      <div class="gallery-item reveal-card"><img src="galeria/instalação de armario.jpeg" alt="Cabinet" class="gallery-img" onclick="openLightbox(this.src)"></div>
+      <div class="gallery-item reveal-card"><img src="galeria/kitchen.jpeg" alt="Kitchen" class="gallery-img" onclick="openLightbox(this.src)"></div>
+      <div class="gallery-item reveal-card"><img src="galeria/framing.jpeg" alt="Framing" class="gallery-img" onclick="openLightbox(this.src)"></div>
+      <div class="gallery-item reveal-card"><img src="galeria/kddf.jpeg" alt="Doors" class="gallery-img" onclick="openLightbox(this.src)"></div>
+      <div class="gallery-item reveal-card"><img src="galeria/decks2.jpg" alt="Decks" class="gallery-img" onclick="openLightbox(this.src)"></div>
+      <div class="gallery-item reveal-card"><img src="galeria/bathroom remodeling .jpeg" alt="Bathroom" class="gallery-img" onclick="openLightbox(this.src)"></div>
+      <div class="gallery-item reveal-card"><img src="galeria/residencial.jpeg" alt="Residential" class="gallery-img" onclick="openLightbox(this.src)"></div>
+      <div class="gallery-item reveal-card"><img src="galeria/comercial.jpg" alt="Commercial" class="gallery-img" onclick="openLightbox(this.src)"></div>
     </div>
   </div>
 </section>
 
-<section class="px-8 py-32 transition-colors duration-500">
-  <div class="max-w-4xl mx-auto reveal-card">
-    <h3 data-i18n="about_title" class="text-3xl font-bold text-center mb-10">About Us</h3>
-    <blockquote class="border-l-4 border-brandRed pl-6 italic text-xl text-gray-600 dark:text-gray-300 mb-10">
-      "<span data-i18n="about_testimonial">Exceptional quality and service. GreyView Group exceeded our expectations on our recent home renovation project. We highly recommend the company!</span>"
-    </blockquote>
-    <div class="space-y-6 text-lg opacity-90 leading-relaxed text-justify md:text-left">
-      <p data-i18n="about_p1">At Greyview Group, we are dedicated to providing high-quality construction services built on trust, skill, and attention to detail...</p>
-      <p data-i18n="about_p2">We specialize in finish carpentry, framing, drywall, window and door installation, custom decks, and general construction...</p>
-      <p data-i18n="about_p3">At Greyview Group, we believe every project deserves precision, honesty, and care...</p>
+<section class="relative px-8 py-40 bg-neutral-900 text-white overflow-hidden">
+  
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brandRed rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brandGray rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000 pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div class="about-bento-card col-span-1 lg:col-span-2 reveal-card">
+        <h3 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400" data-i18n="about_title">Building the Future</h3>
+        <p class="text-gray-300 leading-relaxed mb-4 text-lg" data-i18n="about_p1">
+          At Greyview Group, we don't just build structures; we build trust. Our mission is to provide high-quality construction services driven by skill, attention to detail, and a commitment to excellence.
+        </p>
+        <p class="text-gray-400 leading-relaxed" data-i18n="about_p2">
+          Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision and care. We treat your home as if it were our own.
+        </p>
+      </div>
+
+      <div class="about-bento-card flex flex-col items-center justify-center reveal-card">
+        <span class="text-5xl font-extrabold text-brandRed mb-2">15+</span>
+        <span class="text-gray-400 uppercase tracking-widest text-sm" data-i18n="stat_years">Years Experience</span>
+      </div>
+
+      <div class="about-bento-card col-span-1 lg:col-span-2 flex items-center reveal-card relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 text-9xl text-white opacity-5 font-serif">"</div>
+        <blockquote class="italic text-xl text-gray-200 z-10">
+          "<span data-i18n="about_testimonial">Exceptional quality and service. GreyView Group exceeded our expectations on our recent home renovation project. We highly recommend the company!</span>"
+        </blockquote>
+      </div>
+
+      <div class="about-bento-card flex flex-col items-center justify-center reveal-card">
+        <span class="text-5xl font-extrabold text-white mb-2">100%</span>
+        <span class="text-gray-400 uppercase tracking-widest text-sm" data-i18n="stat_satisfaction">Client Satisfaction</span>
+      </div>
+
     </div>
   </div>
 </section>
@@ -554,7 +573,7 @@
     lightbox.classList.remove('open');
   }
 
-  // ANIMAÇÃO DE FUNDO (PARTÍCULAS VERMELHAS)
+  // ANIMAÇÃO DE FUNDO
   const canvas = document.getElementById('hero-canvas');
   const ctx = canvas.getContext('2d');
   let particles = [];
@@ -672,11 +691,12 @@
       detail_title: 'Attention to Detail',
       gallery_title: 'Project Gallery',
       d1: 'Precision Finishing', d2: 'Quality Materials', d3: 'Professional Execution',
-      about_title: 'About Us',
-      about_testimonial: 'Exceptional quality and service...',
-      about_p1: 'At Greyview Group, we are dedicated...',
-      about_p2: 'We specialize in finish carpentry...',
-      about_p3: 'At Greyview Group, we believe every project deserves precision...',
+      about_title: 'Building the Future',
+      about_p1: 'At Greyview Group, we don\'t just build structures; we build trust...',
+      about_p2: 'Specializing in everything from finish carpentry to custom decks...',
+      about_testimonial: 'Exceptional quality and service. GreyView Group exceeded our expectations...',
+      stat_years: 'Years Experience',
+      stat_satisfaction: 'Client Satisfaction',
       contact_title: 'Request a Quote',
       lbl_name: 'Full Name', lbl_phone: 'Phone Number', lbl_email: 'Email Address',
       lbl_address: 'Project Address', lbl_service: 'Service Type', lbl_budget: 'Estimated Budget',
@@ -708,11 +728,12 @@
       detail_title: 'Atenção aos Detalhes',
       gallery_title: 'Galeria de Projetos',
       d1: 'Acabamento Preciso', d2: 'Materiais de Qualidade', d3: 'Execução Profissional',
-      about_title: 'Sobre Nós',
-      about_testimonial: 'Qualidade e serviço excepcionais...',
-      about_p1: 'Na Greyview Group, dedicamo-nos...',
-      about_p2: 'Somos especializados em acabamentos...',
-      about_p3: 'Na Greyview Group, acreditamos...',
+      about_title: 'Construindo o Futuro',
+      about_p1: 'Na Greyview Group, não construímos apenas estruturas; construímos confiança...',
+      about_p2: 'Especializados em tudo, desde acabamentos até decks personalizados...',
+      about_testimonial: 'Qualidade e serviço excepcionais. A GreyView Group superou nossas expectativas...',
+      stat_years: 'Anos de Experiência',
+      stat_satisfaction: 'Satisfação do Cliente',
       contact_title: 'Solicite um Orçamento',
       lbl_name: 'Nome Completo', lbl_phone: 'Telefone', lbl_email: 'Endereço de E-mail',
       lbl_address: 'Endereço do Projeto', lbl_service: 'Tipo de Serviço', lbl_budget: 'Orçamento Estimado',
@@ -782,14 +803,17 @@
     const modalSub = document.querySelector('[data-i18n="modal_sub"]');
 
     modal.classList.remove('hidden');
-    // Reset modal text in case it was changed
+    
+    // Configurar textos do modal
     modalTitle.innerText = currentLang === 'pt' ? 'Estamos construindo o seu orçamento...' : 'We are building your quote...';
     modalSub.innerText = currentLang === 'pt' ? 'Aguarde um momento enquanto processamos suas informações.' : 'Please wait a moment while we process your information.';
+    bar.style.width = '0%';
     
     // Iniciar animação da barra
     setTimeout(() => { bar.style.width = '100%'; }, 100);
 
     if (method === 'whatsapp') {
+        // Aguarda 3 segundos (simulando processamento) antes de abrir o WhatsApp
         setTimeout(() => {
             const text = `*New Quote Request (via Website)*\n\n` +
                          `👤 *Name:* ${name}\n` +
@@ -829,7 +853,7 @@
                 modalSub.innerText = currentLang === 'pt' ? 'Seu orçamento foi enviado. Entraremos em contato em breve.' : 'Your quote request has been sent. We will contact you soon.';
                 // Fecha após 2s mostrando sucesso
                 setTimeout(closeModal, 2000);
-            }, 3000); // Garante que a animação rode por 3s
+            }, 3000); 
         })
         .catch(error => {
             console.error('Error:', error);
