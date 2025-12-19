@@ -60,14 +60,14 @@
       box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15);
     }
 
-    .service-card-style img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+    /* A classe .service-card-style img padrão foi movida para classes utilitarias do Tailwind nos elementos para dar mais controle */
+    .card-img-default {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.5s ease, filter 0.5s ease;
     }
-
-    .service-card-style:hover img {
+    .service-card-style:hover .card-img-default {
       transform: scale(1.05);
     }
 
@@ -78,6 +78,9 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      position: relative;
+      z-index: 20;
+      background-color: inherit;
     }
 
     .card-title {
@@ -231,42 +234,42 @@
   <h3 data-i18n="services_title" class="text-3xl font-bold text-center mb-16">Our Services</h3>
   <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
     <div class="reveal-card service-card-style">
-      <img src="img/instalação de armario.webp" alt="Cabinet Installation">
+      <img src="img/instalação de armario.webp" alt="Cabinet Installation" class="card-img-default">
       <div class="card-content">
         <h4 class="card-title" data-i18n="s1_title">Cabinet Installation</h4>
         <p class="card-text" data-i18n="s1_desc">Precise and professional cabinet installation, ensuring a perfect fit and lasting quality for your kitchen, bathroom, or commercial space.</p>
       </div>
     </div>
     <div class="reveal-card service-card-style">
-      <img src="img/instalação de janeas.webp" alt="Window Installation">
+      <img src="img/instalação de janeas.webp" alt="Window Installation" class="card-img-default">
       <div class="card-content">
         <h4 class="card-title" data-i18n="s2_title">Window Installation</h4>
         <p class="card-text" data-i18n="s2_desc">We offer professional window installation services that improve energy efficiency, comfort, and the overall appearance of your home.</p>
       </div>
     </div>
     <div class="reveal-card service-card-style">
-      <img src="img/reparos e manutenção em geral.webp" alt="General Repairs">
+      <img src="img/reparos e manutenção em geral.webp" alt="General Repairs" class="card-img-default">
       <div class="card-content">
         <h4 class="card-title" data-i18n="s3_title">General Repairs & Maintenance</h4>
         <p class="card-text" data-i18n="s3_desc">Professional general construction and maintenance services, offering reliable solutions for repairs, improvements, and long-term property care.</p>
       </div>
     </div>
     <div class="reveal-card service-card-style">
-      <img src="img/serviçoes de portas e acabamentos.webp" alt="Doors & Carpentry">
+      <img src="img/serviçoes de portas e acabamentos.webp" alt="Doors & Carpentry" class="card-img-default">
       <div class="card-content">
         <h4 class="card-title" data-i18n="s4_title">Doors & Finish Carpentry</h4>
         <p class="card-text" data-i18n="s4_desc">Enhance your home's interior with expertly installed doors, baseboards, and window casings, adding a touch of elegance and sophistication to any room.</p>
       </div>
     </div>
     <div class="reveal-card service-card-style">
-      <img src="img/baralhos e muito mais.webp" alt="Decks">
+      <img src="img/baralhos e muito mais.webp" alt="Decks" class="card-img-default">
       <div class="card-content">
         <h4 class="card-title" data-i18n="s5_title">Decks & Outdoors</h4>
         <p class="card-text" data-i18n="s5_desc">We specialize in building custom decks that combine strength, style, and functionality, creating perfect outdoor spaces for relaxing and entertaining.</p>
       </div>
     </div>
     <div class="reveal-card service-card-style">
-      <img src="img/reparos e manutenção em geral.webp" alt="Construction" class="grayscale opacity-80">
+      <img src="img/reparos e manutenção em geral.webp" alt="Construction" class="card-img-default grayscale opacity-80">
       <div class="card-content">
         <h4 class="card-title" data-i18n="s6_title">Residential & Commercial</h4>
         <p class="card-text" data-i18n="s6_desc">Complete construction solutions for residential and commercial projects, delivering excellence from foundation to finish.</p>
@@ -288,14 +291,22 @@
   <h3 data-i18n="expert_title" class="text-3xl font-bold text-center mb-16">Our Expertise</h3>
   <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
     <div class="reveal-card service-card-style">
-      <img src="img/residencia.jpg" alt="Residential Construction">
+      <img src="img/residencia.jpg" alt="Residential Construction" class="card-img-default">
       <div class="card-content">
         <h4 class="card-title text-brandRed" data-i18n="res_title">Residential</h4>
         <p class="card-text" data-i18n="res_text">Transform your home with our residential construction services. From renovations to new builds, we bring your vision to life with quality and care.</p>
       </div>
     </div>
-    <div class="reveal-card service-card-style">
-      <img src="img/comercial.jpg" alt="Commercial Construction">
+
+    <div class="reveal-card service-card-style relative group">
+        <img src="img/comercial.jpg" alt="Commercial Construction" class="card-img-default blur-[2px] grayscale opacity-60 group-hover:blur-none group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+        
+        <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+            <span class="bg-brandRed/90 text-white px-6 py-2 rounded-full font-bold text-lg shadow-lg backdrop-blur-sm" data-i18n="coming_soon">
+              Coming Soon
+            </span>
+        </div>
+
       <div class="card-content">
         <h4 class="card-title text-brandRed" data-i18n="com_title">Commercial</h4>
         <p class="card-text" data-i18n="com_text">Expand your business with our commercial construction expertise. We offer innovative and efficient solutions for offices, retail spaces, and more.</p>
@@ -654,6 +665,7 @@
       expert_title: 'Our Expertise',
       res_title: 'Residential', res_text: 'Transform your home with our residential construction services...',
       com_title: 'Commercial', com_text: 'Expand your business with our commercial construction expertise...',
+      coming_soon: 'Coming Soon',
       process_title: 'How We Work',
       p1_title: 'Consultation', p1_text: 'We start with a free consultation...',
       p2_title: 'Planning', p2_text: 'Detailed planning, material selection...',
@@ -689,6 +701,7 @@
       expert_title: 'Nossa Especialização',
       res_title: 'Residencial', res_text: 'Transforme sua casa...',
       com_title: 'Comercial', com_text: 'Expanda seus negócios...',
+      coming_soon: 'Em Breve',
       process_title: 'Como Trabalhamos',
       p1_title: 'Consulta', p1_text: 'Iniciamos com uma consulta gratuita...',
       p2_title: 'Planejamento', p2_text: 'Planejamento detalhado...',
