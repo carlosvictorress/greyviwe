@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreyView Group | Premium Services</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brandRed: '#c62828',
+            brandGray: '#2f2f2f'
+          },
+          transitionTimingFunction: {
+            smooth: 'cubic-bezier(0.22, 1, 0.36, 1)'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white text-gray-900 dark:bg-neutral-900 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 backdrop-blur bg-white/80 dark:bg-neutral-900/80">
+  <div class="flex flex-col items-center py-6">
+    <h1 class="text-2xl font-extrabold tracking-tight">
+      GreyView <span class="text-brandRed">Group</span>
+    </h1>
+    <button id="themeToggle" class="mt-4 px-6 py-2 rounded-full border border-gray-300 dark:border-gray-600 hover:scale-105 transition-all">
+      🌙 / ☀️
+    </button>
+    <div id="progress" class="mt-4 h-1 w-full bg-transparent">
+      <div class="h-1 bg-brandRed w-0"></div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center px-6">
+  <div class="text-center max-w-4xl">
+    <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade">
+      Premium Services with <span class="text-brandRed">Attention to Detail</span>
+    </h2>
+    <p class="text-lg md:text-xl opacity-80 mb-10">
+      High-end craftsmanship, professional execution and reliable delivery for residential and commercial projects.
+    </p>
+    <button class="cta px-10 py-4 rounded-full bg-brandRed text-white text-lg font-semibold shadow-xl hover:shadow-2xl transition-all">
+      Get a Free Quote
+    </button>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="px-8 py-32 bg-gray-50 dark:bg-neutral-800">
+  <h3 class="text-3xl font-bold text-center mb-16">Our Services</h3>
+  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto" data-stagger>
+    <div class="service-card">Cabinet Installation</div>
+    <div class="service-card">Window Installation</div>
+    <div class="service-card">General Repairs</div>
+    <div class="service-card">Doors & Finishing</div>
+    <div class="service-card">Decks & Outdoor</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="px-8 py-32">
+  <div class="max-w-4xl mx-auto text-center">
+    <h3 class="text-3xl font-bold mb-6">About Us</h3>
+    <p class="opacity-80 text-lg">
+      GreyView Group delivers premium construction, installation, and maintenance services with a strong focus on detail, precision, and client satisfaction.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="px-8 py-32 bg-gray-100 dark:bg-neutral-800">
+  <h3 class="text-3xl font-bold text-center mb-12">Request a Quote</h3>
+  <form class="max-w-xl mx-auto grid gap-6">
+    <input class="p-4 rounded-lg border dark:bg-neutral-900" placeholder="Name" />
+    <input class="p-4 rounded-lg border dark:bg-neutral-900" placeholder="Email" />
+    <textarea class="p-4 rounded-lg border dark:bg-neutral-900" rows="5" placeholder="Project details"></textarea>
+    <button class="bg-brandRed text-white py-4 rounded-lg font-semibold hover:scale-105 transition">Send Request</button>
+  </form>
+</section>
+
+<footer class="text-center py-10 opacity-60">
+  © 2025 GreyView Group
+</footer>
+
+<script>
+  // Dark Mode
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+  });
+
+  // Scroll Progress
+  const bar = document.querySelector('#progress div');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = `${(window.scrollY / h) * 100}%`;
+  });
+
+  // Intersection Observer + Stagger
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.service-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 120}ms`;
+    observer.observe(card);
+  });
+</script>
+
+<style>
+  .service-card {
+    @apply bg-white dark:bg-neutral-900 p-8 rounded-2xl shadow-xl text-center text-lg font-semibold opacity-0 translate-y-10 transition-all duration-700;
+  }
+  .service-card.show {
+    @apply opacity-100 translate-y-0;
+  }
+</style>
+
+</body>
+</html>

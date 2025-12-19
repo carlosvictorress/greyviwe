@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreyView Group | Professional Services</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gray: #2f2f2f;
+      --light-gray: #f4f4f4;
+      --red: #c62828;
+      --white: #ffffff;
+      --text-dark: #1c1c1c;
+      --text-light: #f1f1f1;
+      --bg-light: #ffffff;
+      --bg-dark: #1b1b1b;
+    }
+
+    body.dark {
+      --bg-light: #1b1b1b;
+      --text-dark: #f1f1f1;
+      --light-gray: #2a2a2a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--text-dark);
+      transition: all 0.4s ease;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 8%;
+      position: sticky;
+      top: 0;
+      background: var(--bg-light);
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      background: var(--red);
+      width: 0%;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gray);
+    }
+
+    header span {
+      color: var(--red);
+    }
+
+    .toggle {
+      background: var(--light-gray);
+      border: none;
+      padding: 10px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0.6) 10%, transparent 10%);
+      transform: scale(0);
+      transition: transform 0.5s;
+    }
+
+    .toggle:hover::after {
+      transform: scale(4);
+    }
+
+    section {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade { transform: none; }
+    .slide-left { transform: translateX(-80px); }
+    .slide-right { transform: translateX(80px); }
+    .scale { transform: scale(0.9); }
+
+    section.reveal.fade,
+    section.reveal.slide-left,
+    section.reveal.slide-right,
+    section.reveal.scale {
+      transform: translateX(0) scale(1);
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 span {
+      color: var(--red);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .services {
+      background: var(--light-gray);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--bg-light);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .card.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card {
+      transition-delay: var(--delay);
+    }
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: var(--red);
+    }
+
+    .why {
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .carousel {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .carousel .prev { left: 10px; }
+    .carousel .next { right: 10px; }
+
+    .carousel-track {
+      display: flex;
+      animation: slide 18s infinite linear;
+    }
+
+    .carousel img {
+      width: 420px;
+      height: 260px;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 16px;
+    }
+
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .contact {
+      background: var(--light-gray);
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    input, textarea {
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button.submit {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    button.submit:hover {
+      opacity: 0.85;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    @media(max-width: 900px) {
+      .hero, .about {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>GreyView <span>Group</span></h1>
+  <button class="toggle cta-magnetic" onclick="toggleTheme()">🌙 / ☀️</button>
+  <div class="progress-bar"></div>
+</header>
+
+<section class="hero">
+  <div>
+    <h2>Professional Services with <span>Attention to Detail</span></h2>
+    <p>High-quality installation, repairs, and custom solutions for residential and commercial spaces across the United States.</p>
+  </div>
+</section>
+
+<section class="services">
+  <h2>Our Services</h2>
+  <div class="services-grid" data-stagger>
+    <div class="card">
+      <h3>Cabinet Installation</h3>
+      <p>Precise and professional cabinet installation ensuring perfect fit and long-lasting quality.</p>
+    </div>
+    <div class="card">
+      <h3>Window Installation</h3>
+      <p>Energy-efficient window installation to improve comfort and enhance your property’s appearance.</p>
+    </div>
+    <div class="card">
+      <h3>General Repairs & Maintenance</h3>
+      <p>Reliable solutions for repairs, improvements, and long-term property care.</p>
+    </div>
+    <div class="card">
+      <h3>Doors & Finishing Services</h3>
+      <p>Expert installation of doors, baseboards, and window trims for a refined interior finish.</p>
+    </div>
+    <div class="card">
+      <h3>Decks & More</h3>
+      <p>Custom deck construction combining durability, style, and outdoor functionality.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <h2>Why Choose GreyView Group?</h2>
+  <p>The GreyView Group stands out for unwavering attention to detail, commitment to quality, and a personalized approach. We eliminate poor finishes and project delays, delivering professional and reliable results.</p>
+</section>
+
+<section>
+  <h2>Attention to Detail</h2>
+  <div class="carousel">
+    <button class="prev">‹</button>
+    <div class="carousel-track">
+      <img src="https://picsum.photos/600/400?1" />
+      <img src="https://picsum.photos/600/400?2" />
+      <img src="https://picsum.photos/600/400?3" />
+      <img src="https://picsum.photos/600/400?4" />
+    </div>
+    <button class="next">›</button>
+  </div>
+  </div>
+</section>
+
+<section class="about">
+  <div>
+    <h2>About Us</h2>
+    <p>GreyView Group is a professional services company focused on delivering excellence in construction, installation, and maintenance. Our mission is to exceed expectations through craftsmanship, transparency, and reliability.</p>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Request a Quote</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <input type="text" placeholder="Service Needed" required />
+    <textarea rows="5" placeholder="Describe your project"></textarea>
+    <button class="submit">Send Request</button>
+  </form>
+</section>
+
+<footer>
+  © 2025 GreyView Group. All rights reserved.
+</footer>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('dark');
+  }
+
+  /* Scroll Reveal + Stagger */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('section, .card').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('[data-stagger] .card').forEach((card, i) => {
+    card.style.setProperty('--delay', `${i * 120}ms`);
+  });
+
+  /* Magnetic Button */
+  document.querySelectorAll('.cta-magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0,0)';
+    });
+  });
+
+  /* Navbar Scroll Progress */
+  const progress = document.querySelector('.progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    progress.style.width = `${(scrollTop / docHeight) * 100}%`;
+  });
+
+  /* Carousel */
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel img');
+  let index = 0;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * (slides[0].offsetWidth + 20)}px)`;
+  }
+
+  document.querySelector('.next').onclick = () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+  };
+
+  document.querySelector('.prev').onclick = () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+  };
+
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  track.addEventListener('touchend', e => {
+    let diff = e.changedTouches[0].clientX - startX;
+    if (diff > 50) index = Math.max(index - 1, 0);
+    if (diff < -50) index = Math.min(index + 1, slides.length - 1);
+    updateCarousel();
+  });
+
+  /* Lazy Load Images */
+  const lazyImages = document.querySelectorAll('img');
+  const imgObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.loading = 'eager';
+        imgObserver.unobserve(entry.target);
+      }
+    });
+  });
+
+  lazyImages.forEach(img => imgObserver.observe(img));
+</script>
+
+</body>
+</html>
