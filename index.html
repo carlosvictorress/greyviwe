@@ -38,6 +38,22 @@
   </script>
 
   <style>
+    /* DESABILITAR SELEÇÃO DE TEXTO (Extra Proteção) */
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Permitir seleção apenas nos inputs para o cliente digitar */
+    input, textarea {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+
     /* ANIMAÇÃO DE ENTRADA */
     .reveal-card {
       opacity: 0;
@@ -131,7 +147,7 @@
       color: white;
     }
 
-    /* FUTURISTIC ABOUT CARD */
+    /* FUTURISTIC ABOUT CARD (Bento Grid) */
     .about-bento-card {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
@@ -142,7 +158,7 @@
     }
     .about-bento-card:hover {
       background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(198, 40, 40, 0.5); /* Brand Red Border on Hover */
+      border-color: rgba(198, 40, 40, 0.5);
       transform: translateY(-5px);
     }
 
@@ -382,40 +398,28 @@
 </section>
 
 <section class="relative px-8 py-40 bg-neutral-900 text-white overflow-hidden">
-  
   <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brandRed rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob pointer-events-none"></div>
   <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brandGray rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000 pointer-events-none"></div>
 
   <div class="max-w-6xl mx-auto relative z-10">
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
       <div class="about-bento-card col-span-1 lg:col-span-2 reveal-card">
         <h3 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400" data-i18n="about_title">Building the Future</h3>
-        <p class="text-gray-300 leading-relaxed mb-4 text-lg" data-i18n="about_p1">
-          At Greyview Group, we don't just build structures; we build trust. Our mission is to provide high-quality construction services driven by skill, attention to detail, and a commitment to excellence.
-        </p>
-        <p class="text-gray-400 leading-relaxed" data-i18n="about_p2">
-          Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision and care. We treat your home as if it were our own.
-        </p>
+        <p class="text-gray-300 leading-relaxed mb-4 text-lg" data-i18n="about_p1">At Greyview Group, we don't just build structures; we build trust. Our mission is to provide high-quality construction services driven by skill, attention to detail, and a commitment to excellence.</p>
+        <p class="text-gray-400 leading-relaxed" data-i18n="about_p2">Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision and care. We treat your home as if it were our own.</p>
       </div>
-
       <div class="about-bento-card flex flex-col items-center justify-center reveal-card">
-        <span class="text-5xl font-extrabold text-brandRed mb-2">7+</span>
+        <span class="text-5xl font-extrabold text-brandRed mb-2">15+</span>
         <span class="text-gray-400 uppercase tracking-widest text-sm" data-i18n="stat_years">Years Experience</span>
       </div>
-
       <div class="about-bento-card col-span-1 lg:col-span-2 flex items-center reveal-card relative overflow-hidden">
         <div class="absolute -right-10 -bottom-10 text-9xl text-white opacity-5 font-serif">"</div>
-        <blockquote class="italic text-xl text-gray-200 z-10">
-          "<span data-i18n="about_testimonial">Exceptional quality and service. GreyView Group exceeded our expectations on our recent home renovation project. We highly recommend the company!</span>"
-        </blockquote>
+        <blockquote class="italic text-xl text-gray-200 z-10">"<span data-i18n="about_testimonial">Exceptional quality and service. GreyView Group exceeded our expectations on our recent home renovation project. We highly recommend the company!</span>"</blockquote>
       </div>
-
       <div class="about-bento-card flex flex-col items-center justify-center reveal-card">
         <span class="text-5xl font-extrabold text-white mb-2">100%</span>
         <span class="text-gray-400 uppercase tracking-widest text-sm" data-i18n="stat_satisfaction">Client Satisfaction</span>
       </div>
-
     </div>
   </div>
 </section>
@@ -484,12 +488,6 @@
   </form>
 </section>
 
-<button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-brandRed text-white p-3 rounded-full shadow-lg hover:scale-110 hover:shadow-2xl transition duration-300" title="Back to Top">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-  </svg>
-</button>
-
 <div id="lightbox" class="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeLightbox()">
   <button class="absolute top-6 right-6 text-white text-4xl hover:text-brandRed transition">&times;</button>
   <img id="lightbox-img" src="" class="max-h-screen max-w-full rounded-lg shadow-2xl transition-transform duration-300 scale-95">
@@ -511,6 +509,31 @@
 </div>
 
 <footer class="text-center py-10 opacity-60 text-sm">© 2025 GreyView Group</footer>
+
+<script>
+  // 1. Desabilitar Botão Direito
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // 2. Desabilitar Teclas de Atalho (F12, Ctrl+U, Ctrl+Shift+I, etc)
+  document.onkeydown = function(e) {
+    if(event.keyCode == 123) return false;
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;
+  }
+
+  // 3. Detectar se o DevTools foi aberto
+  const element = new Image();
+  Object.defineProperty(element, 'id', {
+    get: function() {
+      // Se alguém tentar abrir o console, redireciona para página em branco
+      window.location.href = "about:blank"; 
+    }
+  });
+  console.log(element);
+</script>
 
 <script>
   // DARK MODE TOGGLE
@@ -803,17 +826,14 @@
     const modalSub = document.querySelector('[data-i18n="modal_sub"]');
 
     modal.classList.remove('hidden');
-    
-    // Configurar textos do modal
+    // Reset modal text in case it was changed
     modalTitle.innerText = currentLang === 'pt' ? 'Estamos construindo o seu orçamento...' : 'We are building your quote...';
     modalSub.innerText = currentLang === 'pt' ? 'Aguarde um momento enquanto processamos suas informações.' : 'Please wait a moment while we process your information.';
-    bar.style.width = '0%';
     
     // Iniciar animação da barra
     setTimeout(() => { bar.style.width = '100%'; }, 100);
 
     if (method === 'whatsapp') {
-        // Aguarda 3 segundos (simulando processamento) antes de abrir o WhatsApp
         setTimeout(() => {
             const text = `*New Quote Request (via Website)*\n\n` +
                          `👤 *Name:* ${name}\n` +
