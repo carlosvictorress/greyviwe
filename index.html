@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="dark"> <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GreyView Group | Construction & Services</title>
@@ -38,7 +37,6 @@
   </script>
 
   <style>
-    /* 1. PROTEÇÃO CONTRA SELEÇÃO DE TEXTO */
     body {
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -52,7 +50,6 @@
       user-select: text;
     }
 
-    /* 2. ANIMAÇÕES DE ENTRADA */
     .reveal-card {
       opacity: 0;
       transform: translateY(40px);
@@ -63,7 +60,6 @@
       transform: translateY(0);
     }
 
-    /* 3. ESTILO DOS CARDS */
     .service-card-style {
       background-color: white;
       border-radius: 1rem;
@@ -110,7 +106,6 @@
       line-height: 1.5;
     }
 
-    /* 4. STEP CARD STYLE (TIMELINE) */
     .step-card {
       position: relative;
       background: white;
@@ -137,7 +132,6 @@
       color: white;
     }
 
-    /* 5. BENTO GRID (ABOUT US - FUTURISTA) */
     .about-bento-card {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
@@ -152,7 +146,6 @@
       transform: translateY(-5px);
     }
 
-    /* 6. LIGHTBOX & MODALS */
     .gallery-img {
       cursor: pointer;
       transition: transform 0.3s ease, filter 0.3s ease;
@@ -172,15 +165,13 @@
     }
     #lightbox { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     #lightbox.open { opacity: 1; pointer-events: auto; }
-    #constructionModal { transition: opacity 0.3s ease; }
+    #constructionModal, #customAlert { transition: opacity 0.3s ease; }
     .hammer-icon { transform-origin: bottom left; animation: hammer 2s infinite ease-in-out; }
     @keyframes hammer { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-45deg); } }
 
-    /* 7. BACK TO TOP */
     #backToTop { opacity: 0; pointer-events: none; transform: translateY(20px); transition: all 0.4s ease; }
     #backToTop.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-    /* 8. DARK MODE OVERRIDES */
     html.dark .service-card-style, html.dark .step-card { background-color: #171717; color: #f3f4f6; }
     html.dark .card-title { color: #f3f4f6; }
     html.dark .card-text { color: #d1d5db; }
@@ -197,7 +188,7 @@
       <img src="img/logo.png" alt="GreyView Group Logo" class="h-16 md:h-20 object-contain">
     </div>
     <div class="flex gap-3">
-      <button id="themeToggle" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition shadow-sm">🌙</button>
+      <button id="themeToggle" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition shadow-sm text-xl">☀️</button>
       <button id="langToggle" class="px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition text-sm font-bold shadow-sm">EN / PT</button>
     </div>
   </div>
@@ -215,7 +206,7 @@
       </span>
     </h2>
     <p data-i18n="hero_sub" class="text-lg md:text-xl opacity-80 mb-10">
-      Professional residential and commercial construction services you can trust.
+      Reliable and professional construction solutions built around your needs.
     </p>
     <a href="#contact-section" class="cta px-10 py-4 rounded-full bg-brandRed text-white text-lg font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition transform duration-300 inline-block">
       Get a Free Quote
@@ -225,7 +216,7 @@
 
 <section class="px-6 py-32 bg-gray-50 dark:bg-neutral-800 transition-colors duration-500">
   <h3 data-i18n="services_title" class="text-3xl font-bold text-center mb-16">Our Services</h3>
-  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
     <div class="reveal-card service-card-style">
       <img src="img/instalação de armario.webp" alt="Cabinet Installation" class="card-img-default">
       <div class="card-content">
@@ -261,17 +252,10 @@
         <p class="card-text" data-i18n="s5_desc">We specialize in building custom decks that combine strength, style, and functionality.</p>
       </div>
     </div>
-    <div class="reveal-card service-card-style">
-      <img src="img/reparos e manutenção em geral.webp" alt="Construction" class="card-img-default grayscale opacity-80">
-      <div class="card-content">
-        <h4 class="card-title" data-i18n="s6_title">Residential & Commercial</h4>
-        <p class="card-text" data-i18n="s6_desc">Complete construction solutions for residential and commercial projects, delivering excellence.</p>
-      </div>
-    </div>
   </div>
 </section>
 
-<section class="px-8 py-32 bg-brandRed text-white dark:bg-neutral-800 dark:text-gray-100 transition-colors duration-500">
+<section class="px-8 py-32 !bg-brandRed text-white transition-colors duration-500">
   <div class="max-w-5xl mx-auto text-center reveal-card">
     <h3 data-i18n="why_title" class="text-3xl font-bold mb-8">Why Choose GreyView Group?</h3>
     <p data-i18n="why_text" class="text-lg opacity-90 leading-relaxed">
@@ -293,10 +277,10 @@
     <div class="reveal-card service-card-style relative group">
         <img src="img/comercial.jpg" alt="Commercial Construction" class="card-img-default blur-[2px] grayscale opacity-60 group-hover:blur-none group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
         <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-            <span class="bg-brandRed/90 text-white px-6 py-2 rounded-full font-bold text-lg shadow-lg backdrop-blur-sm" data-i18n="coming_soon">Coming Soon</span>
+            <span class="bg-brandRed/90 text-white px-6 py-2 rounded-full font-bold text-center text-sm md:text-lg shadow-lg backdrop-blur-sm" data-i18n="coming_soon">Commercial Services</span>
         </div>
       <div class="card-content">
-        <h4 class="card-title text-brandRed" data-i18n="com_title">Commercial</h4>
+        <h4 class="card-title text-brandRed" data-i18n="com_title">Coming Soon. Big upgrades are onthe way.</h4>
         <p class="card-text" data-i18n="com_text">Expand your business with our commercial construction expertise. We offer innovative and efficient solutions for offices, retail spaces, and more.</p>
       </div>
     </div>
@@ -359,9 +343,9 @@
   <div class="max-w-6xl mx-auto relative z-10">
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="about-bento-card col-span-1 lg:col-span-2 reveal-card">
-        <h3 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400" data-i18n="about_title">Building the Future</h3>
-        <p class="text-gray-300 leading-relaxed mb-4 text-lg" data-i18n="about_p1">At Greyview Group, we don't just build structures; we build trust. Our mission is to provide high-quality construction services driven by skill, attention to detail, and a commitment to excellence.</p>
-        <p class="text-gray-400 leading-relaxed" data-i18n="about_p2">Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision and care. We treat your home as if it were our own.</p>
+        <h3 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400" data-i18n="about_title">Our Key Mission</h3>
+        <p class="text-gray-300 leading-relaxed mb-4 text-lg" data-i18n="about_p1">Our mission is to provide high-quality construction services driven by skill, attention to detail, and a commitment to excellence.</p>
+        <p class="text-gray-400 leading-relaxed" data-i18n="about_p2">Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision and care. Our team is dedicated to making your construction experience smooth, respectful, and stress-free.</p>
       </div>
       <div class="about-bento-card flex flex-col items-center justify-center reveal-card">
         <span class="text-5xl font-extrabold text-brandRed mb-2">15+</span>
@@ -379,7 +363,7 @@
   </div>
 </section>
 
-<section id="contact-section" class="px-8 py-32 bg-brandRed text-white dark:bg-neutral-800 dark:text-gray-100 transition-colors duration-500 relative">
+<section id="contact-section" class="px-8 py-32 !bg-brandRed text-white transition-colors duration-500 relative">
   <h3 data-i18n="contact_title" class="text-3xl font-bold text-center mb-12">Request a Quote</h3>
   <form id="quoteForm" class="max-w-4xl mx-auto bg-white text-gray-900 dark:bg-neutral-900 dark:text-gray-100 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 reveal-card">
     <div class="grid md:grid-cols-2 gap-6 mb-6">
@@ -402,12 +386,21 @@
   </form>
 </section>
 
+<div id="customAlert" class="fixed inset-0 z-[110] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-neutral-800 p-8 rounded-2xl shadow-2xl max-w-sm w-full text-center border-t-4 border-brandRed">
+        <h4 id="alertTitle" class="text-xl font-bold mb-4">Attention</h4>
+        <p id="alertMessage" class="opacity-80 mb-6">Message here.</p>
+        <button onclick="closeAlert()" class="w-full bg-brandRed text-white py-3 rounded-lg font-bold hover:bg-red-800 transition">OK</button>
+    </div>
+</div>
+
 <div id="lightbox" class="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeLightbox()"><button class="absolute top-6 right-6 text-white text-4xl hover:text-brandRed transition">&times;</button><img id="lightbox-img" src="" class="max-h-screen max-w-full rounded-lg shadow-2xl transition-transform duration-300 scale-95"></div>
 <div id="constructionModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div class="bg-white dark:bg-neutral-800 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border-b-4 border-brandRed"><div class="flex justify-center mb-6"><div class="relative w-24 h-24 bg-brandGray rounded-full flex items-center justify-center"><svg class="w-12 h-12 text-white hammer-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg></div></div><h4 class="text-2xl font-bold mb-3" data-i18n="modal_title">We are building your quote...</h4><p class="opacity-70 mb-2" data-i18n="modal_sub">Please wait a moment while we process your information.</p><div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-4 overflow-hidden"><div id="modal-bar" class="bg-brandRed h-2.5 rounded-full" style="width: 0%; transition: width 3s linear;"></div></div></div></div>
 <button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-brandRed text-white p-3 rounded-full shadow-lg hover:scale-110 hover:shadow-2xl transition duration-300" title="Back to Top"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg></button>
 <footer class="text-center py-10 opacity-60 text-sm">© 2025 GreyView Group</footer>
 
 <script>
+  // BLOQUEIO DE TECLAS
   document.addEventListener('contextmenu', event => event.preventDefault());
   document.onkeydown = function(e) {
     if(event.keyCode == 123) return false;
@@ -417,14 +410,13 @@
     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
     if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;
   }
-</script>
 
-<script>
-  // ============================================
-  // CORE LOGIC & TRANSLATIONS
-  // ============================================
   const themeToggleBtn = document.getElementById('themeToggle');
-  themeToggleBtn.onclick = () => { document.documentElement.classList.toggle('dark'); updateCanvasColors(); };
+  themeToggleBtn.onclick = () => { 
+    const isDark = document.documentElement.classList.toggle('dark'); 
+    themeToggleBtn.innerText = isDark ? '☀️' : '🌙';
+    updateCanvasColors(); 
+  };
 
   const progressBar = document.getElementById('progress-bar');
   window.addEventListener('scroll', () => {
@@ -443,11 +435,17 @@
   window.addEventListener('scroll', () => { if (window.scrollY > 300) { backToTopBtn.classList.add('visible'); } else { backToTopBtn.classList.remove('visible'); } });
   backToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-  // LIGHTBOX
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('open'); setTimeout(() => { lightboxImg.style.transform = 'scale(1)'; }, 50); }
   function closeLightbox() { lightboxImg.style.transform = 'scale(0.95)'; lightbox.classList.remove('open'); }
+
+  function showCustomAlert(title, msg) {
+      document.getElementById('alertTitle').innerText = title;
+      document.getElementById('alertMessage').innerText = msg;
+      document.getElementById('customAlert').classList.remove('hidden');
+  }
+  function closeAlert() { document.getElementById('customAlert').classList.add('hidden'); }
 
   // PARTICLES
   const canvas = document.getElementById('hero-canvas');
@@ -486,21 +484,20 @@
   // DICTIONARY
   const dict = {
     en: {
-      hero_title: 'Building Excellence with Attention to Detail',
-      hero_sub: 'Professional residential and commercial construction services you can trust.',
+      hero_title: 'Reliable and professional construction solutions built around your needs',
+      hero_sub: 'Reliable and professional construction solutions built around your needs.',
       services_title: 'Our Services',
       s1_title: 'Cabinet Installation', s1_desc: 'Precise and professional cabinet installation, ensuring a perfect fit and lasting quality.',
       s2_title: 'Window Installation', s2_desc: 'We offer professional window installation services that improve energy efficiency and comfort.',
       s3_title: 'General Repairs & Maintenance', s3_desc: 'Professional general construction and maintenance services for long-term property care.',
       s4_title: 'Doors & Finish Carpentry', s4_desc: 'Enhance your home\'s interior with expertly installed doors, baseboards, and window casings.',
       s5_title: 'Decks & Outdoors', s5_desc: 'We specialize in building custom decks that combine strength, style, and functionality.',
-      s6_title: 'Residential & Commercial', s6_desc: 'Complete construction solutions for residential and commercial projects.',
       why_title: 'Why Choose GreyView Group?',
-      why_text: 'A GreyView Group stands out for its unwavering attention to detail, commitment to quality, and personalized approach.',
+      why_text: 'GreyView Group stands out for its unwavering attention to detail, commitment to quality, and personalized approach.',
       expert_title: 'Our Expertise',
       res_title: 'Residential', res_text: 'Transform your home with our residential construction services. From renovations to new builds.',
-      com_title: 'Commercial', com_text: 'Expand your business with our commercial construction expertise. We offer innovative solutions.',
-      coming_soon: 'Coming Soon',
+      com_title: 'Coming Soon. Big upgrades are onthe way.', com_text: 'Expand your business with our commercial construction expertise. We offer innovative solutions.',
+      coming_soon: 'Commercial Services',
       process_title: 'How We Work',
       p1_title: 'Consultation', p1_text: 'We start with a free consultation to understand your vision, budget, and project needs.',
       p2_title: 'Planning', p2_text: 'Detailed planning, material selection, and a transparent quote with no hidden fees.',
@@ -509,9 +506,9 @@
       detail_title: 'Attention to Detail',
       gallery_title: 'Project Gallery',
       d1: 'Precision Finishing', d2: 'Quality Materials', d3: 'Professional Execution',
-      about_title: 'Building the Future',
-      about_p1: 'At Greyview Group, we don\'t just build structures; we build trust. Our mission is to provide high-quality services.',
-      about_p2: 'Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision.',
+      about_title: 'Our Key Mission',
+      about_p1: 'Our mission is to provide high-quality construction services driven by skill, attention to detail, and a commitment to excellence.',
+      about_p2: 'Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision and care. Our team is dedicated to making your construction experience smooth, respectful, and stress-free.',
       about_testimonial: 'Exceptional quality and service. GreyView Group exceeded our expectations on our recent home renovation.',
       stat_years: 'Years Experience', stat_satisfaction: 'Client Satisfaction',
       contact_title: 'Request a Quote',
@@ -522,21 +519,20 @@
       modal_title: 'We are building your quote...', modal_sub: 'Please wait a moment while we process your information.'
     },
     pt: {
-      hero_title: 'Construindo Excelência com Atenção aos Detalhes',
-      hero_sub: 'Serviços profissionais de construção residencial e comercial.',
+      hero_title: 'Soluções de construção confiáveis e profissionais adaptadas às suas necessidades',
+      hero_sub: 'Soluções de construção profissionais construídas em torno das suas necessidades.',
       services_title: 'Nossos Serviços',
-      s1_title: 'Instalação de Armários', s1_desc: 'Instalação precisa e profissional, garantindo um ajuste perfeito e qualidade duradoura.',
+      s1_title: 'Instalação de Armários', s1_desc: 'Instalação precisa e profissional, garantindo um ajuste perfeito e qualidade duradura.',
       s2_title: 'Instalação de Janelas', s2_desc: 'Oferecemos serviços profissionais de instalação de janelas que melhoram a eficiência energética.',
       s3_title: 'Reparos e Manutenção Geral', s3_desc: 'Serviços profissionais de construção e manutenção para cuidados a longo prazo.',
       s4_title: 'Portas e Acabamentos', s4_desc: 'Aprimore o interior da sua casa com portas, rodapés e batentes instalados por especialistas.',
       s5_title: 'Decks e Construções Externas', s5_desc: 'Somos especializados na construção de decks personalizados que combinam força e estilo.',
-      s6_title: 'Construção Residencial e Comercial', s6_desc: 'Soluções completas de construção para projetos residenciais e comerciais.',
       why_title: 'Por que escolher a GreyView Group?',
       why_text: 'A GreyView Group se destaca pela atenção aos detalhes, compromisso com a qualidade e abordagem personalizada.',
       expert_title: 'Nossa Especialização',
       res_title: 'Residencial', res_text: 'Transforme sua casa com nossos serviços de construção residencial. De reformas a novas construções.',
-      com_title: 'Comercial', com_text: 'Expanda seus negócios com nossa expertise em construção comercial. Oferecemos soluções inovadoras.',
-      coming_soon: 'Em Breve',
+      com_title: 'Em Breve. Grandes melhorias a caminho.', com_text: 'Expanda seus negócios com nossa expertise em construção comercial. Oferecemos soluções inovadoras.',
+      coming_soon: 'Serviços Comerciais',
       process_title: 'Como Trabalhamos',
       p1_title: 'Consulta', p1_text: 'Iniciamos com uma consulta gratuita para entender sua visão, orçamento e necessidades.',
       p2_title: 'Planejamento', p2_text: 'Planejamento detalhado, seleção de materiais e um orçamento transparente sem taxas ocultas.',
@@ -545,9 +541,9 @@
       detail_title: 'Atenção aos Detalhes',
       gallery_title: 'Galeria de Projetos',
       d1: 'Acabamento Preciso', d2: 'Materiais de Qualidade', d3: 'Execução Profissional',
-      about_title: 'Construindo o Futuro',
-      about_p1: 'Na Greyview Group, não construímos apenas estruturas; construímos confiança. Nossa missão é fornecer serviços de alta qualidade.',
-      about_p2: 'Especializados em tudo, desde marcenaria de acabamento até decks personalizados, acreditamos que cada projeto merece precisão.',
+      about_title: 'Nossa Missão Principal',
+      about_p1: 'Nossa missão é fornecer serviços de construção de alta qualidade, impulsionados por habilidade, atenção aos detalhes e compromisso com a excelência.',
+      about_p2: 'Especializados em tudo, desde carpintaria de acabamento até decks personalizados, acreditamos que cada projeto merece precisão. Nossa equipe dedica-se a tornar sua experiência de construção tranquila, respeitosa e livre de stress.',
       about_testimonial: 'Qualidade e serviço excepcionais. A GreyView Group superou nossas expectativas em nossa recente reforma.',
       stat_years: 'Anos de Experiência', stat_satisfaction: 'Satisfação do Cliente',
       contact_title: 'Solicite um Orçamento',
@@ -584,17 +580,21 @@
     const titleText = dict[currentLang].hero_title;
     startTypewriter(titleText);
 
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (dict[currentLang][key]) el.innerText = dict[currentLang][key];
+    });
+
     if (currentLang === 'pt') {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.dataset.i18n;
-            if (dict.pt[key]) el.innerText = dict.pt[key];
-        });
         document.getElementById('f_name').placeholder = 'Seu Nome';
         document.getElementById('f_phone').placeholder = '(00) 00000-0000';
         document.getElementById('f_email').placeholder = 'seu@email.com';
         document.getElementById('f_details').placeholder = 'Descreva o que você precisa...';
     } else {
-        location.reload(); 
+        document.getElementById('f_name').placeholder = 'John Doe';
+        document.getElementById('f_phone').placeholder = '(774) 000-0000';
+        document.getElementById('f_email').placeholder = 'john@example.com';
+        document.getElementById('f_details').placeholder = 'Describe your project needs...';
     }
   };
 
@@ -607,7 +607,13 @@
     const address = document.getElementById('f_address').value;
     const budget = document.getElementById('f_budget').value;
 
-    if(!name || !email) { alert("Please fill in at least Name and Email."); return; }
+    if(!name || !email) { 
+        showCustomAlert(
+            currentLang === 'pt' ? 'Campos Faltando' : 'Missing Fields', 
+            currentLang === 'pt' ? 'Por favor, preencha pelo menos Nome e E-mail.' : 'Please fill in at least Name and Email.'
+        ); 
+        return; 
+    }
 
     const modal = document.getElementById('constructionModal');
     const bar = document.getElementById('modal-bar');
@@ -649,7 +655,10 @@
         })
         .catch(error => {
             console.error('Error:', error);
-            setTimeout(() => { alert("Error sending email. Try WhatsApp."); closeModal(); }, 3000);
+            setTimeout(() => { 
+                closeModal();
+                showCustomAlert('Error', 'Error sending email. Try WhatsApp.'); 
+            }, 3000);
         });
     }
   }
