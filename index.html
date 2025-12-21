@@ -206,7 +206,7 @@
       </span>
     </h2>
     <p data-i18n="hero_sub" class="text-lg md:text-xl opacity-80 mb-10">
-      Reliable and professional construction solutions built around your needs.
+      Professional residential construction services you can trust.
     </p>
     <a href="#contact-section" class="cta px-10 py-4 rounded-full bg-brandRed text-white text-lg font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition transform duration-300 inline-block">
       Get a Free Quote
@@ -242,7 +242,7 @@
       <img src="img/serviçoes de portas e acabamentos.webp" alt="Doors & Carpentry" class="card-img-default">
       <div class="card-content">
         <h4 class="card-title" data-i18n="s4_title">Doors & Finish Carpentry</h4>
-        <p class="card-text" data-i18n="s4_desc">Enhance your home's interior with expertly installed doors, baseboards, and window casings.</p>
+        <p class="card-text" data-i18n="s4_desc">Enhance your home's interior with expertly installed doors, baseboards, stairs and window casings.</p>
       </div>
     </div>
     <div class="reveal-card service-card-style">
@@ -280,7 +280,7 @@
             <span class="bg-brandRed/90 text-white px-6 py-2 rounded-full font-bold text-center text-sm md:text-lg shadow-lg backdrop-blur-sm" data-i18n="coming_soon">Commercial Services</span>
         </div>
       <div class="card-content">
-        <h4 class="card-title text-brandRed" data-i18n="com_title">Coming Soon. Big upgrades are onthe way.</h4>
+        <h4 class="card-title text-brandRed" data-i18n="com_title">Coming Soon. Big upgrades are on the way.</h4>
         <p class="card-text" data-i18n="com_text">Expand your business with our commercial construction expertise. We offer innovative and efficient solutions for offices, retail spaces, and more.</p>
       </div>
     </div>
@@ -345,7 +345,7 @@
       <div class="about-bento-card col-span-1 lg:col-span-2 reveal-card">
         <h3 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400" data-i18n="about_title">Our Key Mission</h3>
         <p class="text-gray-300 leading-relaxed mb-4 text-lg" data-i18n="about_p1">Our mission is to provide high-quality construction services driven by skill, attention to detail, and a commitment to excellence.</p>
-        <p class="text-gray-400 leading-relaxed" data-i18n="about_p2">Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision and care. Our team is dedicated to making your construction experience smooth, respectful, and stress-free.</p>
+        <p class="text-gray-400 leading-relaxed" data-i18n="about_p2">We believe every project deserves precision and care. Our team is dedicated to making your construction experience smooth, respectful, and stress-free.</p>
       </div>
       <div class="about-bento-card flex flex-col items-center justify-center reveal-card">
         <span class="text-5xl font-extrabold text-brandRed mb-2">15+</span>
@@ -485,18 +485,22 @@
   const dict = {
     en: {
       hero_title: 'Reliable and professional construction solutions built around your needs',
-      hero_sub: 'Reliable and professional construction solutions built around your needs.',
+      // 2ª Alteração: Tradução EN
+      hero_sub: 'Professional residential construction services you can trust.',
       services_title: 'Our Services',
       s1_title: 'Cabinet Installation', s1_desc: 'Precise and professional cabinet installation, ensuring a perfect fit and lasting quality.',
       s2_title: 'Window Installation', s2_desc: 'We offer professional window installation services that improve energy efficiency and comfort.',
       s3_title: 'General Repairs & Maintenance', s3_desc: 'Professional general construction and maintenance services for long-term property care.',
-      s4_title: 'Doors & Finish Carpentry', s4_desc: 'Enhance your home\'s interior with expertly installed doors, baseboards, and window casings.',
+      s4_title: 'Doors & Finish Carpentry', 
+      // 3ª Alteração: Tradução EN inclusão "stairs"
+      s4_desc: 'Enhance your home\'s interior with expertly installed doors, baseboards, stairs and window casings.',
       s5_title: 'Decks & Outdoors', s5_desc: 'We specialize in building custom decks that combine strength, style, and functionality.',
       why_title: 'Why Choose GreyView Group?',
       why_text: 'GreyView Group stands out for its unwavering attention to detail, commitment to quality, and personalized approach.',
       expert_title: 'Our Expertise',
       res_title: 'Residential', res_text: 'Transform your home with our residential construction services. From renovations to new builds.',
-      com_title: 'Coming Soon. Big upgrades are onthe way.', com_text: 'Expand your business with our commercial construction expertise. We offer innovative solutions.',
+      // 4ª Alteração: Correção ortográfica "on the way"
+      com_title: 'Coming Soon. Big upgrades are on the way.', com_text: 'Expand your business with our commercial construction expertise. We offer innovative solutions.',
       coming_soon: 'Commercial Services',
       process_title: 'How We Work',
       p1_title: 'Consultation', p1_text: 'We start with a free consultation to understand your vision, budget, and project needs.',
@@ -508,7 +512,8 @@
       d1: 'Precision Finishing', d2: 'Quality Materials', d3: 'Professional Execution',
       about_title: 'Our Key Mission',
       about_p1: 'Our mission is to provide high-quality construction services driven by skill, attention to detail, and a commitment to excellence.',
-      about_p2: 'Specializing in everything from finish carpentry to custom decks, we believe every project deserves precision and care. Our team is dedicated to making your construction experience smooth, respectful, and stress-free.',
+      // 1ª Alteração: Tradução EN missão encurtada
+      about_p2: 'We believe every project deserves precision and care. Our team is dedicated to making your construction experience smooth, respectful, and stress-free.',
       about_testimonial: 'Exceptional quality and service. GreyView Group exceeded our expectations on our recent home renovation.',
       stat_years: 'Years Experience', stat_satisfaction: 'Client Satisfaction',
       contact_title: 'Request a Quote',
@@ -520,17 +525,21 @@
     },
     pt: {
       hero_title: 'Soluções de construção confiáveis e profissionais adaptadas às suas necessidades',
-      hero_sub: 'Soluções de construção profissionais construídas em torno das suas necessidades.',
+      // 2ª Alteração: Tradução PT
+      hero_sub: 'Serviços de construção residencial profissional em que você pode confiar.',
       services_title: 'Nossos Serviços',
       s1_title: 'Instalação de Armários', s1_desc: 'Instalação precisa e profissional, garantindo um ajuste perfeito e qualidade duradura.',
       s2_title: 'Instalação de Janelas', s2_desc: 'Oferecemos serviços profissionais de instalação de janelas que melhoram a eficiência energética.',
       s3_title: 'Reparos e Manutenção Geral', s3_desc: 'Serviços profissionais de construção e manutenção para cuidados a longo prazo.',
-      s4_title: 'Portas e Acabamentos', s4_desc: 'Aprimore o interior da sua casa com portas, rodapés e batentes instalados por especialistas.',
+      s4_title: 'Portas e Acabamentos', 
+      // 3ª Alteração: Tradução PT inclusão "escadas"
+      s4_desc: 'Aprimore o interior da sua casa com portas, rodapés, escadas e batentes instalados por especialistas.',
       s5_title: 'Decks e Construções Externas', s5_desc: 'Somos especializados na construção de decks personalizados que combinam força e estilo.',
       why_title: 'Por que escolher a GreyView Group?',
       why_text: 'A GreyView Group se destaca pela atenção aos detalhes, compromisso com a qualidade e abordagem personalizada.',
       expert_title: 'Nossa Especialização',
       res_title: 'Residencial', res_text: 'Transforme sua casa com nossos serviços de construção residencial. De reformas a novas construções.',
+      // 4ª Alteração: Tradução PT correção ortográfica
       com_title: 'Em Breve. Grandes melhorias a caminho.', com_text: 'Expanda seus negócios com nossa expertise em construção comercial. Oferecemos soluções inovadoras.',
       coming_soon: 'Serviços Comerciais',
       process_title: 'Como Trabalhamos',
@@ -543,7 +552,8 @@
       d1: 'Acabamento Preciso', d2: 'Materiais de Qualidade', d3: 'Execução Profissional',
       about_title: 'Nossa Missão Principal',
       about_p1: 'Nossa missão é fornecer serviços de construção de alta qualidade, impulsionados por habilidade, atenção aos detalhes e compromisso com a excelência.',
-      about_p2: 'Especializados em tudo, desde carpintaria de acabamento até decks personalizados, acreditamos que cada projeto merece precisão. Nossa equipe dedica-se a tornar sua experiência de construção tranquila, respeitosa e livre de stress.',
+      // 1ª Alteração: Tradução PT missão encurtada
+      about_p2: 'Acreditamos que cada projeto merece precisão e cuidado. Nossa equipe dedica-se a tornar sua experiência de construção tranquila, respeitosa e livre de stress.',
       about_testimonial: 'Qualidade e serviço excepcionais. A GreyView Group superou nossas expectativas em nossa recente reforma.',
       stat_years: 'Anos de Experiência', stat_satisfaction: 'Satisfação do Cliente',
       contact_title: 'Solicite um Orçamento',
